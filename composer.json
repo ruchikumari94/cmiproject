@@ -1,0 +1,80 @@
+{
+    "name": "ruchikumari94/cmiproject",
+    "description": "Cummins Website Distribution Project",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.3.0",
+        "drupal/core-recommended": "~9.3.0",
+        "drupal/core-composer-scaffold": "~9.2",
+        "szeidler/composer-patches-cli": "~1.0.0",
+        "oomphinc/composer-installers-extender": "~2.0",
+        "wikimedia/composer-merge-plugin": "~2.0",
+        "drupal/console": "~1.0",
+        "drush/drush": "^8.0",
+        "solarium/solarium": "~6.1",
+	"ruchikumari94/cmiweb": "~9.3.0"
+    },
+    "conflict": {
+        "symfony/http-foundation": "3.4.24"
+    },
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        "asset": {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+	"cmidist": {
+            "type": "github",
+            "url": "https://github.com/ruchikumari94/cmiweb",
+            "no-api": true
+        }
+    },
+    "config": {
+        "process-timeout": 0,
+        "allow-plugins": {
+            "composer/installers": true,
+            "drupal/core-composer-scaffold": true,
+            "cweagans/composer-patches": true,
+            "wikimedia/composer-merge-plugin": true,
+            "drupal/console-extend-plugin": true,
+            "oomphinc/composer-installers-extender": true,
+            "szeidler/composer-patches-cli": true
+        }
+    },
+    "extra": {
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "docroot/"
+            }
+        },
+        "merge-plugin": {
+            "include": ["docroot/profiles/contrib/cmiweb/composer.json"],
+            "recurse": true,
+            "replace": false,
+            "merge-extra": true,
+            "merge-extra-deep": true,
+            "merge-scripts": true
+        },
+        "installer-types": ["bower-asset", "npm-asset"],
+        "installer-paths": {
+            "docroot/core": ["type:drupal-core"],
+            "docroot/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
+            "docroot/modules/contrib/{$name}": ["type:drupal-module"],
+            "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
+            "patch/{$name}": ["type:drupal-patch"]
+        },
+        "enable-patching": true,
+	"patches-file": "composer.patches.json"
+    },
+    "scripts": {
+        "post-create-project-cmd": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "post-update-cmd": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+    }
+}
