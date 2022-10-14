@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0aec9e4de45160641bf32ad73ed3a56a",
+    "content-hash": "76cc63e13f5d158e6a9b7aa159960f4d",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -9187,7 +9187,7 @@
         },
         {
             "name": "ruchikumari94/cmiweb",
-            "version": "9.3.0",
+            "version": "9.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ruchikumari94/cmiweb",
